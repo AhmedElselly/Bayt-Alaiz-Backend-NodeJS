@@ -63,6 +63,9 @@ module.exports = {
 	},
 
 	async getPostImage(req, res) {
-		return res.send(post.image.data);
+		res.set('Content-Type', req.post.image.contentType)
+		return res.send(req.post.image.data);
+		// res.set('Content-Type', req.post.image.contentType);
+		// return res.send(req.post.image.data);
 	}
 }
