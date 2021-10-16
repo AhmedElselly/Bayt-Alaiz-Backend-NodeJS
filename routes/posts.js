@@ -17,8 +17,8 @@ const {
 
 router.post('/create/:userId', upload.single('image'), create);
 
-router.get('/post/:postId', getPost);
-router.get('/post/:postId/image', getPostImage);
+router.get('/:postId', getPost);
+router.get('/:postId/image', getPostImage);
 
 router.get('/', postIndex);
 
