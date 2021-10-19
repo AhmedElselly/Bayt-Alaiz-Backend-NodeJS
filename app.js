@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const userRoutes = require('./routes/users');
 const postRoutes = require('./routes/posts');
+const orderRoutes = require('./routes/orders');
 
 app.use(express.json());
 app.use(helmet());
@@ -45,6 +46,7 @@ app.get('/',(req, res) => {
 
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/orders', orderRoutes);
 
 
 app.listen(PORT, () => {
