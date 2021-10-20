@@ -3,13 +3,11 @@ const router = express.Router();
 
 const {
   create,
-  getOrder,
-  getOrderById
-} = require('../controllers/orders');
+  categoryIndex
+} = require('../controllers/categories');
 
+router.get('/', categoryIndex);
 router.post('/create', create);
-router.get('/:orderId', getOrder);
 
-router.param('orderId', getOrderById);
 
 module.exports = router;
