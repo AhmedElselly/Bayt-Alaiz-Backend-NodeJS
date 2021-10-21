@@ -8,8 +8,13 @@ const {
     getPostById,
     getPost,
     postIndex,
-    getPostImage
+    getPostImage,
+    getPostsByCategory
 } = require('../controllers/posts');
+
+const {
+    getCategoryById
+} = require('../controllers/categories');
 
 const {
     getUserById
@@ -17,6 +22,7 @@ const {
 
 router.post('/create/:userId', upload.single('image'), create);
 
+router.get('/:categoryId', getPostsByCategory)
 router.get('/:postId', getPost);
 router.get('/:postId/image', getPostImage);
 
@@ -24,5 +30,6 @@ router.get('/', postIndex);
 
 router.param('userId', getUserById);
 router.param('postId', getPostById);
+router.param('categoryId', getCategoryById);
 
 module.exports = router;

@@ -62,10 +62,15 @@ module.exports = {
 		return res.json(post);
 	},
 
+	async getPostsByCategory(req, res){
+		const post = await Post.find({category: req.category})
+		.populate('category')
+		.select('-image');
+		return res.json(post);
+	},
+
 	async getPostImage(req, res) {
 		res.set('Content-Type', req.post.image.contentType)
 		return res.send(req.post.image.data);
-		// res.set('Content-Type', req.post.image.contentType);
-		// return res.send(req.post.image.data);
 	}
 }
