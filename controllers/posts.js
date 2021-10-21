@@ -63,10 +63,11 @@ module.exports = {
 	},
 
 	async getPostsByCategory(req, res){
-		const post = await Post.find({category: req.category})
-		.populate('category')
+		const posts = await Post.find({category: req.category})
+		.populate('category', '-image')
 		.select('-image');
-		return res.json(post);
+		console.log(posts)
+		return res.json(posts);
 	},
 
 	async getPostImage(req, res) {
