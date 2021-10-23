@@ -9,6 +9,7 @@ const {
     getPost,
     postIndex,
     getPostImage,
+    findPost,
     getPostsByCategory
 } = require('../controllers/posts');
 
@@ -23,6 +24,7 @@ const {
 router.post('/create', upload.single('image'), create);
 
 router.get('/by-category/:categoryId', getPostsByCategory)
+router.get('/find', findPost);
 router.get('/:postId', getPost);
 router.get('/:postId/image', getPostImage);
 

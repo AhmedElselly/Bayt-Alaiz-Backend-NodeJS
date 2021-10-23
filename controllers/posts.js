@@ -70,6 +70,10 @@ module.exports = {
 		return res.json(posts);
 	},
 
+	async findPost(req, res){
+		const posts = await Post.find({$or: [{name: req.body.search}, {description: req.body.search}]})
+	},
+
 	async getPostImage(req, res) {
 		res.set('Content-Type', req.post.image.contentType)
 		return res.send(req.post.image.data);
