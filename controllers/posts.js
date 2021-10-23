@@ -71,7 +71,10 @@ module.exports = {
 	},
 
 	async findPost(req, res){
-		const posts = await Post.find({$or: [{name: req.body.search}, {description: req.body.search}]})
+		const posts = await Post.find({$or: [{name: req.body.search}, {description: req.body.search}]}).select('-image');
+
+		console.log(posts)
+		return res.json(posts);
 	},
 
 	async getPostImage(req, res) {
